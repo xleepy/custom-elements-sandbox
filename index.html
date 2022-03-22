@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="js/hello-world.js"></script>
+    <script src="js/button.js"></script>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -9,9 +10,15 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
+    <script>
+      function test(e) {
+        console.log('test', e);
+      }
+    </script>
   </head>
   <body>
     <h1>Sandbox</h1>
     <hello-world class="test"></hello-world>
+    <custom-button aria-label="test" onclick="test(event)">Test</custom-button>
   </body>
 </html>
