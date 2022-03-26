@@ -1,7 +1,11 @@
 class Button extends HTMLElement {
-  connectedCallback() {
+  constructor() {
+    super();
     this.attachShadow({ mode: 'open' });
-    this.render().then(() => console.log('hey'));
+  }
+
+  connectedCallback() {
+    this.render();
   }
 
   #createStyles() {
@@ -9,12 +13,18 @@ class Button extends HTMLElement {
     style.innerHTML = `
     .btn {
       font-family: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
-      padding: 0.5rem 1rem;
       background: white;
       cursor: pointer;
       color: black;
       border: none;
+      padding: 0 1rem;
       border-radius: 4px;
+    }
+    .btn-size--sm {
+      height: 20px;
+    }
+    .btn-size--md {
+      height: 36px;
     }
     .btn:active {
       background: rgba(255,255,255, 0.75);
@@ -31,10 +41,14 @@ class Button extends HTMLElement {
         const button = document.createElement('button');
         const ariaLabel = this.getAttribute('aria-label');
 
+        const btnSize = this.getAttribute('size') ?? 'md';
+
         if (ariaLabel) {
           button.setAttribute('aria-label', ariaLabel);
         }
-        button.classList.add('btn');
+        button.classList.add('btn', `btn-size--${btnSize}`);
+        button.setAttribute('part', 'button');
+
         button.innerHTML = this.innerHTML;
         this.shadowRoot.append(button);
 

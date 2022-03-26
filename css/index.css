@@ -10,7 +10,14 @@ h1 {
   margin: 0;
 }
 
-.test {
-  border: 1px solid #03A062;
-  padding: 0.5rem 0.25rem;
+
+
+.bt::part(button) {
+  background-color: blue;
+  color: white;
+}
+
+.bt::part(button):active {
+  background-color: rgb(0, 0, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5)
 }
